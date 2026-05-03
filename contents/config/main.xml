@@ -7,37 +7,48 @@
 
     <group name="General">
         <entry name="fontFamily" type="String">
+            <label i18n="true">Font Family</label>
             <default>Noto Sans</default>
         </entry>
         <entry name="fontSize" type="Int">
-          <default>0</default>
+            <label i18n="true">Font Size (0 = autofill)</label>
+            <default>0</default>
         </entry>
         <entry name="isBold" type="Bool">
-          <default>true</default>
+            <label i18n="true">Bold Text</label>
+            <default>true</default>
         </entry>
         <entry name="useColorGradient" type="Bool">
-          <default>false</default>
+            <label i18n="true">Use Color Gradient</label>
+            <default>false</default>
         </entry>
         <entry name="solidColor" type="Color">
-          <default>#FF0000FF</default>
+            <label i18n="true">Text Color</label>
+            <default>#FF0000FF</default>
         </entry>
         <entry name="bkgColor" type="Color">
-          <default>#00000000</default>
+            <label i18n="true">Background Color</label>
+            <default>#00000000</default>
         </entry>
         <entry name="redTemp" type="Int">
-          <default>80</default>
+            <label i18n="true">Red Value</label>
+            <default>80</default>
         </entry>
         <entry name="greenTemp" type="Int">
-          <default>50</default>
+            <label i18n="true">Green Value</label>
+            <default>50</default>
         </entry>
         <entry name="fixedSize" type="Bool">
-          <default>true</default>
+            <label i18n="true">Fixed Size</label>
+            <default>true</default>
         </entry>
         <entry name="widgetWidth" type="Int">
-          <default>40</default>
+            <label i18n="true">Width in Pixels</label>
+            <default>40</default>
         </entry>
         <entry name="cornerRadius" type="Int">
-          <default>4</default>
+            <label i18n="true">Rounded Corners Radius</label>
+            <default>4</default>
         </entry>
     </group>
 </kcfg>

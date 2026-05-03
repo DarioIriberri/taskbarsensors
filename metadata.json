@@ -13,6 +13,7 @@
         ],
         "Icon": "view-list-text",
         "Id": "org.dazz.taskbarsensors",
+        "TranslationDomain": "org.dazz.taskbarsensors",
         "License": "LGPLv2+",
         "Name": "Taskbar Sensors",
         "Description": "A highly customizable text-only sensor face for the System Monitor Sensor, suitable for taskbar sensor monitoring.",

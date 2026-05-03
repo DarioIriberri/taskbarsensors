@@ -1,20 +1,23 @@
 /*
     SPDX-FileCopyrightText: 2019 Marco Martin <mart@kde.org>
-
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls as QQC2
 import org.kde.kquickcontrols as KQuickControls
-
 import org.kde.kirigami as Kirigami
-
 import org.kde.ksysguard.sensors as Sensors
 import org.kde.ksysguard.faces as Faces
 
+
 Kirigami.FormLayout {
     id: root
+    // Kirigami.Name.domain: "org.dazz.taskbarsensors"
+
+    // Set a default window size that fits all sections
+    implicitWidth: Kirigami.Units.gridUnit * 35
+    implicitHeight: Kirigami.Units.gridUnit * 30
         
     property string cfg_fontFamily
     property alias cfg_fontSize: fontSize.value
@@ -35,7 +38,7 @@ Kirigami.FormLayout {
     
     QQC2.ComboBox {
         id: fontSelector
-        Kirigami.FormData.label: "Font Family:"
+        Kirigami.FormData.label: i18n("Font Family:")
         
         model: Qt.fontFamilies()
         
@@ -50,29 +53,35 @@ Kirigami.FormLayout {
         from: 0
         to: 100
     }
+
     QQC2.CheckBox {
         id: boldCheckbox
-        Kirigami.FormData.label: "Bold Text:"
+        Kirigami.FormData.label: i18n("Bold Text:")
     }
+
     Kirigami.Separator {
         Kirigami.FormData.isSection: true
         Kirigami.FormData.label: i18n("Color Settings")
     }
+
     QQC2.CheckBox {
         id: useColorGradientCheckbox
-        Kirigami.FormData.label: "Use Color Gradient:"
+        Kirigami.FormData.label: i18n("Use Color Gradient:")
     }
+
     KQuickControls.ColorButton {
         id: solidColor
-        Kirigami.FormData.label: "Pick Text Color:"
+        Kirigami.FormData.label: i18n("Pick Text Color:")
         enabled: !useColorGradientCheckbox.checked
         showAlphaChannel: true
     }
+
     KQuickControls.ColorButton {
         id: bkgColor
-        Kirigami.FormData.label: "Pick Background Color:"
+        Kirigami.FormData.label: i18n("Pick Background Color:")
         showAlphaChannel: true
     }
+
     QQC2.SpinBox {
         id: redTemp
         Kirigami.FormData.label: i18nc("@label:spinbox", "Red Value:")
@@ -81,6 +90,7 @@ Kirigami.FormLayout {
         from: 0
         to: 100
     }
+
     QQC2.SpinBox {
         id: greenTemp
         Kirigami.FormData.label: i18nc("@label:spinbox", "Green Value:")
@@ -89,14 +99,17 @@ Kirigami.FormLayout {
         from: 0
         to: 100
     }
+
     Kirigami.Separator {
         Kirigami.FormData.isSection: true
         Kirigami.FormData.label: i18n("Miscellaneous Settings")
     }
+
     QQC2.CheckBox {
         id: fixedSize
-        Kirigami.FormData.label: "Fixed Size:"
+        Kirigami.FormData.label: i18n("Fixed Size:")
     }
+
     QQC2.SpinBox {
         id: widgetWidth
         Kirigami.FormData.label: i18nc("@label:spinbox", "Width in Pixels:")
@@ -105,6 +118,7 @@ Kirigami.FormLayout {
         from: 5
         to: 1000
     }
+
     QQC2.SpinBox {
         id: cornerRadius
         Kirigami.FormData.label: i18nc("@label:spinbox", "Rounded Corners Radius:")
@@ -113,4 +127,3 @@ Kirigami.FormLayout {
         to: 100
     }
 }
-

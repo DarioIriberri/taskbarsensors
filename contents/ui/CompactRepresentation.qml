@@ -66,7 +66,7 @@ Faces.CompactSensorFace {
             anchors.fill: parent
             font.pixelSize: {
                 let effectiveSize = root.fontSize === 0 ? parent.height * 0.8 : root.fontSize;
-                let finalSize = Math.round(currentHigh) >= 100 ? effectiveSize * 0.8 : effectiveSize;
+                let finalSize = (Math.round(currentHigh) >= 100 && sensorIsPercentage && root.fixedSize) ? effectiveSize * 0.8 : effectiveSize;
                 
                 return finalSize;
             }
@@ -81,7 +81,9 @@ Faces.CompactSensorFace {
             property int mIDCOLOR : (root.redTemp + root.greenTemp) / 2
             property int mINCOLOR : root.greenTemp
             property real currentHigh: 0
-
+            property bool sensorIsPercentage: false
+            property bool sensorIsTemerature: false
+            
             color: root.useColorGradient ? (currentHigh >= mIDCOLOR ? getGreen(currentHigh) : getRed(currentHigh)) : root.solidColor
 
             Instantiator {
@@ -92,6 +94,17 @@ Faces.CompactSensorFace {
                     sensorId: modelData
                     updateRateLimit: root.controller.updateRateLimit
                     onValueChanged: maxTempLabel.requestUpdate()
+                    
+                    Component.onCompleted: {
+                        // THIS IS THE ONLY TIME THE STRING CHECK RUNS
+                        let id = sensorId.toLowerCase();
+                        maxTempLabel.sensorIsPercentage = id.includes("percentage") || id.includes("usage")
+                        maxTempLabel.sensorIsTemerature = id.includes("temperature")
+                        
+                        console.log("!!!!!!!!!!!!!!!!!!!! ************ sensorId ************: " + sensorId)
+                        console.log("!!!!!!!!!!!!!!!!!!!! ************ sensorIsPercentage ************: " + maxTempLabel.sensorIsPercentage)
+                        console.log("!!!!!!!!!!!!!!!!!!!! ************ sensorIsTemerature ************: " + maxTempLabel.sensorIsTemerature)
+                    }
                 }
             }
 
